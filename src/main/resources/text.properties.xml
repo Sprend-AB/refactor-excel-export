@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+	<!-- Common strings -->
+
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+	<entry key="common.yes.en">Yes</entry>
+	<entry key="common.yes.sv">Ja</entry>
+	<entry key="common.yes.hr">Da</entry>
+	<entry key="common.yes.it">Sì</entry>
+	<entry key="common.yes.pt">Sim</entry>
+	<entry key="common.yes.es">Sí</entry>
+	<entry key="common.yes.fr">Oui</entry>
+
+	<entry key="common.no.en">No</entry>
+	<entry key="common.no.sv">Nej</entry>
+	<entry key="common.no.hr">Ne</entry>
+	<entry key="common.no.it">No</entry>
+	<entry key="common.no.pt">Não</entry>
+	<entry key="common.no.es">No</entry>
+	<entry key="common.no.fr">Non</entry>
+
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+	<!-- Sent Files page -->
+
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+	<entry key="sent-files.export-sheet.en">Sent files</entry>
+	<entry key="sent-files.export-sheet.sv">Skickade filer</entry>
+	<entry key="sent-files.export-sheet.hr">Poslane datoteke</entry>
+	<entry key="sent-files.export-sheet.it">File inviati</entry>
+	<entry key="sent-files.export-sheet.pt">Ficheiros enviados</entry>
+	<entry key="sent-files.export-sheet.es">Archivos enviados</entry>
+	<entry key="sent-files.export-sheet.fr">Fichiers envoyés</entry>
+
+	<entry key="sent-files.export-column.filename.en">File name</entry>
+	<entry key="sent-files.export-column.filename.sv">Filnamn</entry>
+	<entry key="sent-files.export-column.filename.hr">Naziv datoteke</entry>
+	<entry key="sent-files.export-column.filename.it">Nome del file</entry>
+	<entry key="sent-files.export-column.filename.pt">Nome do ficheiro</entry>
+	<entry key="sent-files.export-column.filename.es">Nombre del archivo</entry>
+	<entry key="sent-files.export-column.filename.fr">Nom du fichier</entry>
+
+	<entry key="sent-files.export-column.file-size-in-bytes.en">File size (bytes)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.sv">Filstorlek (byte)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.hr">Veličina datoteke (bajtovi)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.it">Dimensione del file (byte)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.pt">Tamanho do ficheiro (bytes)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.es">Tamaño del archivo (bytes)</entry>
+	<entry key="sent-files.export-column.file-size-in-bytes.fr">Taille du fichier (octets)</entry>
+
+	<entry key="sent-files.export-no-expiry.en">No expiry</entry>
+	<entry key="sent-files.export-no-expiry.sv">Ingen utgångstid</entry>
+	<entry key="sent-files.export-no-expiry.hr">Bez isteka</entry>
+	<entry key="sent-files.export-no-expiry.it">Senza scadenza</entry>
+	<entry key="sent-files.export-no-expiry.pt">Sem data de expiração</entry>
+	<entry key="sent-files.export-no-expiry.es">Sin caducidad</entry>
+	<entry key="sent-files.export-no-expiry.fr">Sans expiration</entry>
+
+	<entry key="sent-files.export-column.upload-finished.en">Upload finished (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.sv">Uppladdning slutförd (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.hr">Slanje dovršeno (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.it">Caricamento completato (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.pt">Carregamento concluído (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.es">Carga completada (UTC)</entry>
+	<entry key="sent-files.export-column.upload-finished.fr">Envoi terminé (UTC)</entry>
+
+	<entry key="sent-files.export-column.expires.en">Expire time (UTC)</entry>
+	<entry key="sent-files.export-column.expires.sv">Går ut (UTC)</entry>
+	<entry key="sent-files.export-column.expires.hr">Istječe (UTC)</entry>
+	<entry key="sent-files.export-column.expires.it">Scadenza (UTC)</entry>
+	<entry key="sent-files.export-column.expires.pt">Expira em (UTC)</entry>
+	<entry key="sent-files.export-column.expires.es">Caduca (UTC)</entry>
+	<entry key="sent-files.export-column.expires.fr">Expiration (UTC)</entry>
+
+	<entry key="sent-files.export-column.message.en">Message</entry>
+	<entry key="sent-files.export-column.message.sv">Meddelande</entry>
+	<entry key="sent-files.export-column.message.hr">Poruka</entry>
+	<entry key="sent-files.export-column.message.it">Messaggio</entry>
+	<entry key="sent-files.export-column.message.pt">Mensagem</entry>
+	<entry key="sent-files.export-column.message.es">Mensaje</entry>
+	<entry key="sent-files.export-column.message.fr">Message</entry>
+
+	<entry key="sent-files.export-column.downloaded.en">Has successful download?</entry>
+	<entry key="sent-files.export-column.downloaded.sv">Har lyckad nedladdning?</entry>
+	<entry key="sent-files.export-column.downloaded.hr">Uspješno preuzeto?</entry>
+	<entry key="sent-files.export-column.downloaded.it">Download riuscito?</entry>
+	<entry key="sent-files.export-column.downloaded.pt">Transferência bem-sucedida?</entry>
+	<entry key="sent-files.export-column.downloaded.es">¿Descarga correcta?</entry>
+	<entry key="sent-files.export-column.downloaded.fr">Téléchargement réussi ?</entry>
+
+	<entry key="sent-files.export-file-name.en">Sent with Sprend by {0} - {1} to {2}</entry>
+	<entry key="sent-files.export-file-name.sv">Skickat med Sprend av {0} - {1} till {2}</entry>
+	<entry key="sent-files.export-file-name.hr">Poslano putem Sprenda - {0} - od {1} do {2}</entry>
+	<entry key="sent-files.export-file-name.it">Inviato con Sprend da {0} - dal {1} al {2}</entry>
+	<entry key="sent-files.export-file-name.pt">Enviado com o Sprend por {0} - de {1} a {2}</entry>
+	<entry key="sent-files.export-file-name.es">Enviado con Sprend por {0} - del {1} al {2}</entry>
+	<entry key="sent-files.export-file-name.fr">Envoyé avec Sprend par {0} - du {1} au {2}</entry>
+
+</properties>

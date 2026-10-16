@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/go-to-new-sprend.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/member/settings.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/member" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sensei/users.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sensei" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sign-up-to-sprend/sign-up-to-sprend.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sign-up-to-sprend" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/uploadfinished.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/member/extend-pro-page.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/member" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/member/purchase-done/purchase-done-page.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/member/purchase-done" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/pub/base/variables.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/pub/base" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/data-processors/data-processors-page.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/data-processors" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/products/ad-landing-pages/compare-plans.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/products/ad-landing-pages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/products/ad-landing-pages/free-users-page.jsp" value="file://$PROJECT_DIR$/src/main/webapp/app/pub/pages/products/ad-landing-pages" />
+      </map>
+    </option>
+  </component>
+</project>

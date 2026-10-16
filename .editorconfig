@@ -1,0 +1,17 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = tab
+tab_width = 3
+indent_size = 3
+trim_trailing_whitespace = true
+
+# Note: this file carries only the portable, tool-agnostic keys (indentation,
+# newlines, charset) so non-IntelliJ editors and AI agents get them right.
+# The full house style — notably Allman braces, which has no portable key — is
+# the git-tracked IntelliJ scheme in .idea/codeStyles/Project.xml. IntelliJ
+# layers this file on top of that scheme (keys here win; everything else,
+# including brace style, falls back to Project.xml).
