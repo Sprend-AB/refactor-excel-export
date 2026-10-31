@@ -28,7 +28,7 @@ brew install intellij-idea --cask
 
 ### 4. Run & Test via Toolbar
 Pre-configured run configurations are available directly in the top run toolbar:
-- **Run Tests**: Select **All JUnit tests** from the toolbar and click **Run** (or press `^⇧R`).
+- **Run Tests**: Select **All JUnit tests** from the toolbar and click **Run** (or press `⌥⇧F9`).
 - **Generate Sample Export**: Select **Run Main** from the toolbar to generate `sample-export.xlsx` in the project root.
 
 ---

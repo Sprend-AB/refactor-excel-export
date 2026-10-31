@@ -31,3 +31,4 @@ sample-export.xlsx
 /svelte/.vite/
 /svelte/node_modules/
 /src/main/webapp/svelte-dist/
+/.ai/mcp/mcp.json

@@ -2,6 +2,10 @@
 
 A standalone Kotlin/Java utility library and generator for exporting Himeji parcel data to styled Excel spreadsheets (`.xlsx`).
 
+## The task
+
+The task is to refactor the `ParcelExcelWriter` for readability and maintainability. And you are lucky: there are tests in `ParcelExcelWriterTest` to confirm that your changes don't break the functionality. Feel free to change the current code, or to completely rewrite it.
+
 ## Features
 
 - **Excel Spreadsheet Generation**: Creates formatted `.xlsx` workbooks containing parcel data with custom styling and number formats.
