@@ -1,6 +1,6 @@
 package com.sprend.himeji
 
-import com.sprend.himeji.original.OriginalParcelExcelWriter
+import com.sprend.himeji.original.ParcelExcelWriter
 import com.sprend.himeji.refactored.SentParcelsExcelWorkbook
 import com.sprend.himeji.refactored2.SimpleExcelExport
 import org.apache.poi.ss.usermodel.CellType
@@ -138,10 +138,10 @@ class ParcelExcelWriterTest
 		{
 			excel(listOf(row().copy(filename = "f".repeat(40), message = "m".repeat(500)))).use { workbook ->
 				val sheet = workbook.getSheetAt(0)
-				assertEquals((40 + OriginalParcelExcelWriter.ColumnPadding) * 256, sheet.getColumnWidth(1))
-				assertEquals(OriginalParcelExcelWriter.MaxColumnWidth * 256, sheet.getColumnWidth(4))
+				assertEquals((40 + ParcelExcelWriter.ColumnPadding) * 256, sheet.getColumnWidth(1))
+				assertEquals(ParcelExcelWriter.MaxColumnWidth * 256, sheet.getColumnWidth(4))
 				val downloadedHeader = sheet.getRow(0).getCell(5).stringCellValue
-				val expectedWidth = max(OriginalParcelExcelWriter.MinColumnWidth, downloadedHeader.length + OriginalParcelExcelWriter.ColumnPadding)
+				val expectedWidth = max(ParcelExcelWriter.MinColumnWidth, downloadedHeader.length + ParcelExcelWriter.ColumnPadding)
 				assertEquals(expectedWidth * 256, sheet.getColumnWidth(5))
 			}
 		}
@@ -158,7 +158,7 @@ class ParcelExcelWriterTest
 	}
 
 	@Nested
-	inner class OriginalParcelExcelWriterTests : ExporterTestSuite(OriginalParcelExcelWriter)
+	inner class ParcelExcelWriterTests : ExporterTestSuite(ParcelExcelWriter)
 
 	@Nested
 	inner class RefactoredSentParcelsExcelWorkbook : ExporterTestSuite(SentParcelsExcelWorkbook)

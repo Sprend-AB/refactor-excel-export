@@ -16,7 +16,7 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import kotlin.math.max
 
-object OriginalParcelExcelWriter : ParcelExcelExporter
+object ParcelExcelWriter : ParcelExcelExporter
 {
 	const val Extension = "xlsx"
 	private const val RowWindowSize = 100
