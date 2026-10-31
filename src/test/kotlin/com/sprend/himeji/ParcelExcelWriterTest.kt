@@ -2,6 +2,7 @@ package com.sprend.himeji
 
 import com.sprend.himeji.original.OriginalParcelExcelWriter
 import com.sprend.himeji.refactored.SentParcelsExcelWorkbook
+import com.sprend.himeji.refactored2.SimpleExcelExport
 import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.DataFormatter
 import org.apache.poi.ss.usermodel.DateUtil
@@ -161,4 +162,7 @@ class ParcelExcelWriterTest
 
 	@Nested
 	inner class RefactoredSentParcelsExcelWorkbook : ExporterTestSuite(SentParcelsExcelWorkbook)
+
+	@Nested
+	inner class SimpleExcelExportTests : ExporterTestSuite(SimpleExcelExport)
 }

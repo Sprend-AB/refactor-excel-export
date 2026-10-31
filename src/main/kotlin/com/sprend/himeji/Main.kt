@@ -2,6 +2,7 @@ package com.sprend.himeji
 
 import com.sprend.himeji.original.OriginalParcelExcelWriter
 import com.sprend.himeji.refactored.SentParcelsExcelWorkbook
+import com.sprend.himeji.refactored2.SimpleExcelExport
 import java.io.File
 
 object Main
@@ -39,6 +40,7 @@ object Main
 		val exporters: List<Pair<String, ParcelExcelExporter>> = listOf(
 			"sample-export-original.xlsx" to OriginalParcelExcelWriter,
 			"sample-export-refactored.xlsx" to SentParcelsExcelWorkbook,
+			"sample-export-refactored2.xlsx" to SimpleExcelExport,
 		)
 
 		for ((filename, exporter) in exporters)
