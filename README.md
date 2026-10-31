@@ -4,13 +4,13 @@ A standalone Kotlin/Java utility library and generator for exporting Himeji parc
 
 ## The task
 
-The task is to refactor the `ParcelExcelWriter` for readability and maintainability. And you are lucky: there are tests in `ParcelExcelWriterTest` to confirm that your changes don't break the functionality. Feel free to change the current code, or to completely rewrite it.
+The task is to refactor the [ParcelExcelWriter](src/main/kotlin/com/sprend/himeji/ParcelExcelWriter.kt) for readability and maintainability. And you are lucky: there are tests in [ParcelExcelWriterTest](src/test/kotlin/com/sprend/himeji/ParcelExcelWriterTest.kt) to confirm that your changes don't break the functionality. Feel free to change the current code, or to completely rewrite it.
 
 ## Features
 
 - **Excel Spreadsheet Generation**: Creates formatted `.xlsx` workbooks containing parcel data with custom styling and number formats.
 - **Multilingual Support**: Supports Swedish and English localized headers and messages via XML properties resources.
-- **Standalone CLI Generator**: Simple entry point (`com.sprend.himeji.Main`) to generate sample exports for validation.
+- **Standalone CLI Generator**: Simple entry point ([com.sprend.himeji.Main](src/main/kotlin/com/sprend/himeji/Main.kt)) to generate sample exports for validation.
 
 ## Prerequisites
 
