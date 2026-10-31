@@ -20,7 +20,7 @@ The task is to refactor the [ParcelExcelWriter](src/main/kotlin/com/sprend/himej
 ## Quick Start in IntelliJ IDEA
 
 1. In IntelliJ IDEA, select **Get from VCS** (or **File > New > Project from Version Control...**).
-2. Enter the repository URL: `https://github.com/sprend/refactor-excel-export.git` (or sign in with your GitHub account) and click **Clone**.
+2. Enter the URL of this repository (or sign in with your GitHub account and select it) and click **Clone**.
 3. IntelliJ IDEA automatically imports the Gradle project and provisions **JDK 17** via Gradle Toolchains.
 4. Run tests or generate exports using the pre-configured toolbar configurations:
    - **All JUnit tests**: Runs the test suite.
