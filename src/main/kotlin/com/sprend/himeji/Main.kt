@@ -1,5 +1,6 @@
 package com.sprend.himeji
 
+import com.sprend.himeji.excel.SentParcelsExcelWorkbook
 import java.io.File
 
 object Main
@@ -34,10 +35,18 @@ object Main
 			)
 		)
 
-		val outputFile = File("sample-export.xlsx")
-		outputFile.outputStream().use { output ->
-			ParcelExcelWriter.write(sampleRows, output, I18n(Language.English))
+		val exporters: List<Pair<String, ParcelExcelExporter>> = listOf(
+			"sample-export-original.xlsx" to OriginalParcelExcelWriter,
+			"sample-export-refactored.xlsx" to SentParcelsExcelWorkbook,
+		)
+
+		for ((filename, exporter) in exporters)
+		{
+			val outputFile = File(filename)
+			outputFile.outputStream().use { output ->
+				exporter.write(sampleRows, output, I18n(Language.English))
+			}
+			println("Generated ${outputFile.absolutePath} successfully using ${exporter.javaClass.simpleName}.")
 		}
-		println("Generated ${outputFile.absolutePath} successfully.")
 	}
 }

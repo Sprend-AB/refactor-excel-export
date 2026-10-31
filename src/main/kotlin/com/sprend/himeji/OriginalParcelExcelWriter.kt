@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import kotlin.math.max
 
-object ParcelExcelWriter
+object OriginalParcelExcelWriter : ParcelExcelExporter
 {
 	const val Extension = "xlsx"
 	private const val RowWindowSize = 100
@@ -49,7 +49,7 @@ object ParcelExcelWriter
 		Column("downloaded", Styles::text) { row, i18n -> i18n.get(if (row.hasSuccessfulDownload) "common.yes" else "common.no").uppercase() },
 	)
 
-	fun write(rows: List<ParcelRow>, output: OutputStream, i18n: I18n)
+	override fun write(rows: List<ParcelRow>, output: OutputStream, i18n: I18n)
 	{
 		SXSSFWorkbook(RowWindowSize).use { workbook ->
 			workbook.isCompressTempFiles = true
@@ -115,7 +115,7 @@ object ParcelExcelWriter
 			else -> throw IllegalArgumentException("No cell writer for " + value.javaClass.name)
 		}
 
-	fun fileName(username: String, rows: List<ParcelRow>, i18n: I18n, todayUtc: DateTimeUtc = DateTimeUtc.now()): String
+	override fun fileName(username: String, rows: List<ParcelRow>, i18n: I18n, todayUtc: DateTimeUtc): String
 	{
 		val sentTimesUtc = rows.mapNotNull { it.uploadFinishTimeUtc }
 		val fromUtc = sentTimesUtc.minByOrNull { it.epochMillis } ?: todayUtc
