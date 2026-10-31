@@ -3,7 +3,7 @@ package com.sprend.himeji.refactored
 import com.sprend.himeji.DateTimeUtc
 import com.sprend.himeji.I18n
 import com.sprend.himeji.ParcelExcelExporter
-import com.sprend.himeji.ParcelRow
+import com.sprend.himeji.ParcelMetaData
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.util.CellRangeAddress
 import org.apache.poi.xssf.streaming.SXSSFWorkbook
@@ -24,7 +24,7 @@ object SentParcelsExcelWorkbook : ParcelExcelExporter
 	private const val DateTextLength = 19
 	private const val SheetNameKey = "sent-files.export-sheet"
 
-	override fun write(parcelHistory: List<ParcelRow>, output: OutputStream, i18n: I18n)
+	override fun write(parcelHistory: List<ParcelMetaData>, output: OutputStream, i18n: I18n)
 	{
 		SXSSFWorkbook(RowWindowSize).use { workbook ->
 			workbook.isCompressTempFiles = true
@@ -57,7 +57,7 @@ object SentParcelsExcelWorkbook : ParcelExcelExporter
 		}
 	}
 
-	private fun writeParcelRowsAndSetRowHeights(sheet: Sheet, sentParcelList: List<ParcelRow>, widths: IntArray, columns: List<SentParcelExcelColumn>)
+	private fun writeParcelRowsAndSetRowHeights(sheet: Sheet, sentParcelList: List<ParcelMetaData>, widths: IntArray, columns: List<SentParcelExcelColumn>)
 	{
 		sentParcelList.forEachIndexed { rowIndex, parcel ->
 			val sheetRow = sheet.createRow(rowIndex + 1)
@@ -75,7 +75,7 @@ object SentParcelsExcelWorkbook : ParcelExcelExporter
 		}
 	}
 
-	private fun columnWidthsInChars(headers: List<String>, parcels: List<ParcelRow>, columns: List<SentParcelExcelColumn>): IntArray
+	private fun columnWidthsInChars(headers: List<String>, parcels: List<ParcelMetaData>, columns: List<SentParcelExcelColumn>): IntArray
 	{
 		val widths = IntArray(headers.size) { headers[it].length }
 		for (parcel in parcels)
@@ -100,7 +100,7 @@ object SentParcelsExcelWorkbook : ParcelExcelExporter
 			is WorkbookCellValue.Text -> value.value.lines()
 		}
 
-	override fun fileName(username: String, rows: List<ParcelRow>, i18n: I18n, todayUtc: DateTimeUtc): String
+	override fun fileName(username: String, rows: List<ParcelMetaData>, i18n: I18n, todayUtc: DateTimeUtc): String
 	{
 		val sentTimesUtc = rows.mapNotNull { it.uploadFinishTimeUtc }
 		val fromUtc = sentTimesUtc.minByOrNull { it.epochMillis } ?: todayUtc

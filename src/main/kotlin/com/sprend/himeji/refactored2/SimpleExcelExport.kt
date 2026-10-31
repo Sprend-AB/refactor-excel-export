@@ -4,7 +4,7 @@ import com.sprend.himeji.DateTimeUtc
 import com.sprend.himeji.I18n
 import com.sprend.himeji.Language
 import com.sprend.himeji.ParcelExcelExporter
-import com.sprend.himeji.ParcelRow
+import com.sprend.himeji.ParcelMetaData
 import com.sprend.himeji.SysConstants
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.CellStyle
@@ -29,13 +29,13 @@ private const val WidthUnitsPerCharacter = 256
 private const val DateFormat = "yyyy-mm-dd hh:mm:ss"
 
 //explicit order and translation keys property references don't require kotlin-reflect
-private val MetadataColumns: List<Pair<KProperty1<FileMetadata, *>, String>> = listOf(
-	FileMetadata::uploadFinishTimeUtc to "upload-finished",
-	FileMetadata::filename to "filename",
-	FileMetadata::fileSizeInBytes to "file-size-in-bytes",
-	FileMetadata::expireTimeUtc to "expires",
-	FileMetadata::message to "message",
-	FileMetadata::hasSuccessfulDownload to "downloaded",
+private val MetadataColumns: List<Pair<KProperty1<ParcelMetaData, *>, String>> = listOf(
+	ParcelMetaData::uploadFinishTimeUtc to "upload-finished",
+	ParcelMetaData::filename to "filename",
+	ParcelMetaData::fileSizeInBytes to "file-size-in-bytes",
+	ParcelMetaData::expireTimeUtc to "expires",
+	ParcelMetaData::message to "message",
+	ParcelMetaData::hasSuccessfulDownload to "downloaded",
 )
 
 private enum class CellStyleKind
@@ -59,7 +59,7 @@ private fun createCellStyle(workbook: SXSSFWorkbook, kind: CellStyleKind): CellS
 		}
 	}
 
-fun writeFileMetadataXlsx(files: List<FileMetadata>, output: OutputStream, i18n: I18n = I18n(Language.English))
+fun writeParcelMetaDataXlsx(files: List<ParcelMetaData>, output: OutputStream, i18n: I18n = I18n(Language.English))
 {
 	//no use syntax to avoid indent level across 50 lines
 	val workbook = SXSSFWorkbook(RowWindowSize)
@@ -70,13 +70,13 @@ fun writeFileMetadataXlsx(files: List<FileMetadata>, output: OutputStream, i18n:
 	//fancy repetition avoiding through map instance
 	val styles = CellStyleKind.entries.associateWith { createCellStyle(workbook, it) }
 
-	fun formatCell(file: FileMetadata, property: KProperty1<FileMetadata, *>, cell: Cell? = null): String
+	fun formatCell(file: ParcelMetaData, property: KProperty1<ParcelMetaData, *>, cell: Cell? = null): String
 	{
 		val styleKind = when (property)
 		{
-			FileMetadata::filename, FileMetadata::message -> CellStyleKind.Text
-			FileMetadata::fileSizeInBytes -> CellStyleKind.Number
-			FileMetadata::hasSuccessfulDownload -> CellStyleKind.Status
+			ParcelMetaData::filename, ParcelMetaData::message -> CellStyleKind.Text
+			ParcelMetaData::fileSizeInBytes -> CellStyleKind.Number
+			ParcelMetaData::hasSuccessfulDownload -> CellStyleKind.Status
 			else -> CellStyleKind.Date
 		}
 		val style: CellStyle = styles.getValue(styleKind)
@@ -85,7 +85,7 @@ fun writeFileMetadataXlsx(files: List<FileMetadata>, output: OutputStream, i18n:
 		val rawValue = property.get(file) //file.fileName
 		val value = when
 		{
-			property == FileMetadata::expireTimeUtc && rawValue == SysConstants.StorageTimePermanentDate ->
+			property == ParcelMetaData::expireTimeUtc && rawValue == SysConstants.StorageTimePermanentDate ->
 				i18n.get("sent-files.export-no-expiry")
 			rawValue is Boolean -> i18n.get(if (rawValue) "common.yes" else "common.no").uppercase()
 			else -> rawValue
@@ -160,33 +160,14 @@ fun writeFileMetadataXlsx(files: List<FileMetadata>, output: OutputStream, i18n:
 	workbook.close()
 }
 
-fun writeFileMetadataXlsx(files: List<FileMetadata>, path: String, i18n: I18n = I18n(Language.English))
-{
-	val outputFile = File(path)
-	outputFile.outputStream().use { output ->
-		writeFileMetadataXlsx(files, output, i18n)
-	}
-	println("Generated ${outputFile.absolutePath} successfully.")
-}
-
 object SimpleExcelExport : ParcelExcelExporter
 {
-	override fun write(rows: List<ParcelRow>, output: OutputStream, i18n: I18n)
+	override fun write(rows: List<ParcelMetaData>, output: OutputStream, i18n: I18n)
 	{
-		val files = rows.map { row ->
-			FileMetadata(
-				filename = row.filename,
-				fileSizeInBytes = row.fileSizeInBytes,
-				uploadFinishTimeUtc = row.uploadFinishTimeUtc,
-				expireTimeUtc = row.expireTimeUtc,
-				message = row.message,
-				hasSuccessfulDownload = row.hasSuccessfulDownload,
-			)
-		}
-		writeFileMetadataXlsx(files, output, i18n)
+		writeParcelMetaDataXlsx(rows, output, i18n)
 	}
 
-	override fun fileName(username: String, rows: List<ParcelRow>, i18n: I18n, todayUtc: DateTimeUtc): String
+	override fun fileName(username: String, rows: List<ParcelMetaData>, i18n: I18n, todayUtc: DateTimeUtc): String
 	{
 		val sentTimesUtc = rows.mapNotNull { it.uploadFinishTimeUtc }
 		val fromUtc = sentTimesUtc.minByOrNull { it.epochMillis } ?: todayUtc

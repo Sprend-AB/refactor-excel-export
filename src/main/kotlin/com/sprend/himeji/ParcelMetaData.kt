@@ -1,6 +1,6 @@
 package com.sprend.himeji
 
-data class ParcelRow(
+data class ParcelMetaData(
 	val filename: String?,
 	val fileSizeInBytes: Long?,
 	val uploadFinishTimeUtc: DateTimeUtc?,

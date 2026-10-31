@@ -11,7 +11,7 @@ object Main
 	fun main(args: Array<String>)
 	{
 		val sampleRows = listOf(
-			ParcelRow(
+			ParcelMetaData(
 				filename = "presentation-slides.pdf",
 				fileSizeInBytes = 1024 * 1024 * 15L,
 				uploadFinishTimeUtc = DateTimeUtc("2026-10-16 12:00:00"),
@@ -19,7 +19,7 @@ object Main
 				message = "Here are the presentation slides for today's meeting.",
 				hasSuccessfulDownload = true
 			),
-			ParcelRow(
+			ParcelMetaData(
 				filename = "financial-report-q3.xlsx",
 				fileSizeInBytes = 1024 * 512L,
 				uploadFinishTimeUtc = DateTimeUtc("2026-10-15 09:30:00"),
@@ -27,7 +27,7 @@ object Main
 				message = "Final Q3 financial figures.",
 				hasSuccessfulDownload = false
 			),
-			ParcelRow(
+			ParcelMetaData(
 				filename = "design-assets.zip",
 				fileSizeInBytes = 1024 * 1024 * 128L,
 				uploadFinishTimeUtc = DateTimeUtc("2026-10-14 18:45:00"),

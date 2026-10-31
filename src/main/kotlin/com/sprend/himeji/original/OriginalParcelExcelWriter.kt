@@ -3,7 +3,7 @@ package com.sprend.himeji.original
 import com.sprend.himeji.DateTimeUtc
 import com.sprend.himeji.I18n
 import com.sprend.himeji.ParcelExcelExporter
-import com.sprend.himeji.ParcelRow
+import com.sprend.himeji.ParcelMetaData
 import com.sprend.himeji.SysConstants
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.CellStyle
@@ -27,7 +27,7 @@ object OriginalParcelExcelWriter : ParcelExcelExporter
 	private const val DateTextLength = 19
 	private const val SheetNameKey = "sent-files.export-sheet"
 
-	internal class Column(val i18nKey: String, val style: (Styles) -> CellStyle, val value: (ParcelRow, I18n) -> Any?)
+	internal class Column(val i18nKey: String, val style: (Styles) -> CellStyle, val value: (ParcelMetaData, I18n) -> Any?)
 	{
 		fun header(i18n: I18n): String = i18n.get("sent-files.export-column.$i18nKey")
 
@@ -54,7 +54,7 @@ object OriginalParcelExcelWriter : ParcelExcelExporter
 		Column("downloaded", Styles::text) { row, i18n -> i18n.get(if (row.hasSuccessfulDownload) "common.yes" else "common.no").uppercase() },
 	)
 
-	override fun write(rows: List<ParcelRow>, output: OutputStream, i18n: I18n)
+	override fun write(rows: List<ParcelMetaData>, output: OutputStream, i18n: I18n)
 	{
 		SXSSFWorkbook(RowWindowSize).use { workbook ->
 			workbook.isCompressTempFiles = true
@@ -69,7 +69,7 @@ object OriginalParcelExcelWriter : ParcelExcelExporter
 		}
 	}
 
-	private fun columnWidths(rows: List<ParcelRow>, i18n: I18n): IntArray =
+	private fun columnWidths(rows: List<ParcelMetaData>, i18n: I18n): IntArray =
 		IntArray(Columns.size) { index ->
 			val column = Columns[index]
 			val widestText = rows.fold(column.header(i18n).length) { widest, row ->
@@ -90,7 +90,7 @@ object OriginalParcelExcelWriter : ParcelExcelExporter
 		}
 	}
 
-	private fun addCells(sheet: SXSSFSheet, styles: Styles, rows: List<ParcelRow>, i18n: I18n, widths: IntArray)
+	private fun addCells(sheet: SXSSFSheet, styles: Styles, rows: List<ParcelMetaData>, i18n: I18n, widths: IntArray)
 	{
 		rows.forEachIndexed { rowIndex, row ->
 			val sheetRow = sheet.createRow(rowIndex + 1)
@@ -120,7 +120,7 @@ object OriginalParcelExcelWriter : ParcelExcelExporter
 			else -> throw IllegalArgumentException("No cell writer for " + value.javaClass.name)
 		}
 
-	override fun fileName(username: String, rows: List<ParcelRow>, i18n: I18n, todayUtc: DateTimeUtc): String
+	override fun fileName(username: String, rows: List<ParcelMetaData>, i18n: I18n, todayUtc: DateTimeUtc): String
 	{
 		val sentTimesUtc = rows.mapNotNull { it.uploadFinishTimeUtc }
 		val fromUtc = sentTimesUtc.minByOrNull { it.epochMillis } ?: todayUtc

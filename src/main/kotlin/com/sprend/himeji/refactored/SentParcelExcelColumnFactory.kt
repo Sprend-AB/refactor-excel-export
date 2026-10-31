@@ -1,7 +1,6 @@
 package com.sprend.himeji.refactored
 
 import com.sprend.himeji.I18n
-import com.sprend.himeji.ParcelRow
 import com.sprend.himeji.SysConstants
 
 internal object SentParcelExcelColumnFactory

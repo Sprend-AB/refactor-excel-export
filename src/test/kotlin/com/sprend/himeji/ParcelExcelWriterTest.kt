@@ -29,7 +29,7 @@ class ParcelExcelWriterTest
 
 	abstract class ExporterTestSuite(private val exporter: ParcelExcelExporter)
 	{
-		private fun row() = ParcelRow(
+		private fun row() = ParcelMetaData(
 			filename = "test.txt",
 			fileSizeInBytes = 123456789L,
 			uploadFinishTimeUtc = DateTimeUtc("2026-09-25 13:14:15"),
@@ -38,7 +38,7 @@ class ParcelExcelWriterTest
 			hasSuccessfulDownload = true
 		)
 
-		private fun excel(rows: List<ParcelRow>, language: Language = Language.English): XSSFWorkbook
+		private fun excel(rows: List<ParcelMetaData>, language: Language = Language.English): XSSFWorkbook
 		{
 			val output = ByteArrayOutputStream()
 			exporter.write(rows, output, I18n(language))
