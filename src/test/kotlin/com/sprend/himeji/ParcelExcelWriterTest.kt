@@ -149,10 +149,22 @@ class ParcelExcelWriterTest
 		@Test
 		fun rowIsAsTallAsItsTallestText()
 		{
-			excel(listOf(row().copy(message = "a\nb\nc"), row())).use { workbook ->
+			val rows = listOf(
+				row().copy(message = "a\nb\nc"),
+				row(),
+				row().copy(message = ""),
+				row().copy(message = null),
+				row().copy(message = "a\n"),
+				row().copy(message = "m".repeat(200))
+			)
+			excel(rows).use { workbook ->
 				val sheet = workbook.getSheetAt(0)
 				assertEquals(3 * sheet.defaultRowHeightInPoints, sheet.getRow(1).heightInPoints)
 				assertEquals(sheet.defaultRowHeightInPoints, sheet.getRow(2).heightInPoints)
+				assertEquals(sheet.defaultRowHeightInPoints, sheet.getRow(3).heightInPoints, "empty text")
+				assertEquals(sheet.defaultRowHeightInPoints, sheet.getRow(4).heightInPoints, "missing text")
+				assertEquals(2 * sheet.defaultRowHeightInPoints, sheet.getRow(5).heightInPoints, "trailing newline")
+				assertEquals(3 * sheet.defaultRowHeightInPoints, sheet.getRow(6).heightInPoints, "long single line wraps")
 			}
 		}
 	}
